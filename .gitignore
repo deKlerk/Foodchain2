@@ -1,1 +1,4 @@
+.gitignore
+.env
 venv
+*.xml
