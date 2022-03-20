@@ -16,8 +16,9 @@ hops = hs.Hops(app)
     hs.HopsString("URL", "URL", "URL of the ontology to load")
   ],
   outputs=[
-    hs.HopsString("Classes", "Cs", "Classes in the ontology", access=hs.HopsParamAccess.LIST),
-    hs.HopsString("Properties", "Ps", "Properties in the ontology", access=hs.HopsParamAccess.LIST),
+    hs.HopsString("Classes", "Classes", "Classes in the ontology", access=hs.HopsParamAccess.LIST),
+    hs.HopsString("Properties", "Properties", "Properties in the ontology", access=hs.HopsParamAccess.LIST),
+    hs.HopsString("Individuals", "Individuals", "Individuals in the ontology", access=hs.HopsParamAccess.LIST),
   ]
 )
 def loadOnto(txt: str):
@@ -56,6 +57,7 @@ def loadOnto(txt: str):
   class_temp = list(onto.classes())
   classes = []
   print('\nclasses in the ontology:')
+  print('-'*30)
   for c in class_temp:
     print(c.name)
     classes.append(c.name)
@@ -64,11 +66,21 @@ def loadOnto(txt: str):
   prop_temp = list(onto.properties())
   props = []
   print('\nproperties in the ontology:')
-  for c in prop_temp:
-    print(c.name)
-    props.append(c.name)
+  print('-'*30)
+  for p in prop_temp:
+    print(p.name)
+    props.append(p.name)    
 
-  return classes, props
+  # get individuals from the ontology
+  ind_temp = list(onto.individuals())
+  inds = []
+  print('\nindividuals in the ontology:')
+  print('-'*30)
+  for i in ind_temp:
+    print(i.name)
+    inds.append(i.name)
+
+  return classes, props, inds
 
 
 if __name__ == "__main__":
