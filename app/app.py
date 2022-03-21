@@ -2,7 +2,6 @@ from flask import Flask
 import ghhops_server as hs
 import owlready2 as or2
 import rhino3dm as rh
-import json
 
 app = Flask('__name__')
 hops = hs.Hops(app)
